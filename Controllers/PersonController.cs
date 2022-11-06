@@ -22,7 +22,6 @@ namespace API.Controllers
             this._personService = personService;
         }
 
-        public PersonService PS=new PersonService();
 
         [HttpPost("AddPerson")]
         public async Task<ServiceResponse<List<GetPersonDto>>> PostPerson(AddPersonDto newPerson)

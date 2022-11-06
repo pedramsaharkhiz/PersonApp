@@ -6,12 +6,15 @@ using API.Dto;
 using API.Interface;
 using API.Models;
 using API.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
     [ApiController]
     [Route("API/[Controller]")]
+    [Authorize]
+
     public class PersonController : ControllerBase
     {
 
@@ -29,6 +32,7 @@ namespace API.Controllers
 
             return (await _personService.AddPerson(newPerson));
         }
+        [AllowAnonymous]
         [HttpGet("GetAllPerson")]
         public async Task<ServiceResponse<List<GetPersonDto>>>GetAllPerson(){
             return (await _personService.GetAllPerson());

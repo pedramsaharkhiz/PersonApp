@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using API.Dto;
 using API.Interface;
 using API.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -10,6 +11,7 @@ namespace API.Controllers
     [Route("Controller")]
     public class AuthController : ControllerBase
     {
+        
         private readonly IAuthRepository _authRepository;
 
         public AuthController(IAuthRepository authRepository)
@@ -37,7 +39,7 @@ namespace API.Controllers
             if(!response.Success){
                 return BadRequest(response.Message);
             }
-            return Ok($"{response.Message} {response.Data} !");
+            return Ok($"Welcome {response.Message} ! it's your Token : {response.Data} !");
         }
     }
 }
